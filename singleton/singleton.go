@@ -21,3 +21,8 @@ func GetInstance() *Singleton {
 
 	return singleton
 }
+
+//ClearInstance 清除實體
+func ClearInstance() {
+	singleton = nil
+}
