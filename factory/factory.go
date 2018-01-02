@@ -1,25 +1,21 @@
 package factory
 
-import (
-	"fmt"
-)
-
 type iFormat interface {
-	Run()
+	Run() string
 }
 
 type jsonFormat struct {
 }
 
-func (f *jsonFormat) Run() {
-	fmt.Println("json")
+func (f *jsonFormat) Run() string {
+	return "json"
 }
 
 type xmlFormat struct {
 }
 
-func (f *xmlFormat) Run() {
-	fmt.Println("xml")
+func (f *xmlFormat) Run() string {
+	return "xml"
 }
 
 func getFormat(formatType string) iFormat {
@@ -34,12 +30,4 @@ func getFormat(formatType string) iFormat {
 		panic("no foramt")
 	}
 	return foramt
-}
-
-func factory() {
-
-	f := getFormat("XML")
-
-	f.Run()
-
 }
