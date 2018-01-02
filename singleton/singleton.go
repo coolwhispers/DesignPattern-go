@@ -1,21 +1,23 @@
 package Singleton
 
-import "sync"
+import (
+	"sync"
+	"time"
+)
 
 //Singleton 單體模式
-type Singleton struct{}
-
-var singleton *Singleton
+var singleton *string
 
 var singletonLock sync.Mutex
 
 //GetInstance 取得實體
-func GetInstance() *Singleton {
+func GetInstance() *string {
 
 	if singleton == nil {
 		singletonLock.Lock()
 		if singleton == nil {
-			singleton = &Singleton{}
+			var now = time.Now().Format("2006-01-02 15:04:05")
+			singleton = &now
 		}
 	}
 
